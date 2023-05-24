@@ -1,0 +1,42 @@
+<p-table [value]="productos" [tableStyle]="{'min-width': '50rem'}"
+         selectionMode="single" [(selection)]="selectedProducto" dataKey="id">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Fecha Produccion</th>
+      <th>Fecha Caducidad</th>
+      <th>Descripcion</th>
+      <th>Tienda</th>
+      <th>Marca</th>
+      <th>Clasifiacion</th>
+      <th>Color</th>
+      <th>State</th>
+      <th>Opciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item>
+    <tr [pSelectableRow]="item">
+      <td>{{item.id}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.precio}}</td>
+      <td>{{item.fProduccion}}</td>
+      <td>{{item.fCaducidad}}</td>
+      <td>{{item.descripcion}}</td>
+      <td>{{item.tienda}}</td>
+      <td>{{item.marca}}</td>
+      <td>{{item.clasificacion}}</td>
+      <td>{{item.color}}</td>
+      <td>{{item.state}}</td>
+      <td>
+        <button pButton type="button" class="p-button-warning" icon="pi pi-pencil"
+                (click)="editProducto(item)"></button>
+        <button pButton type="button" class="p-button-danger" icon="pi pi-trash"
+                (click)="deleteProducto(item.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+{{selectedProducto | json}}
+<button pButton type="button" class="p-button-success" label="Crear Persona" (click)="createProducto()"></button>

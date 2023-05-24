@@ -1,0 +1,86 @@
+<div class="formgrid grid">
+  <div class="col-6">
+    <p-panel header="Reactive Forms">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+        <div class="field">
+          <label>ID:</label>
+          <input type="number" pInputText formControlName="id" />
+        </div>
+        <div class="field">
+          <label>Nombre:</label>
+          <input type="text" pInputText formControlName="nombre" />
+          <small *ngIf="form.controls['nombre'].errors && form.controls['nombre'].touched">
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Precio:</label>
+          <p-inputNumber inputId="precio" formControlName="precio" [showButtons]="true" [min]="0"
+            [step]="5"></p-inputNumber>
+        </div>
+        <div class="field">
+          <label>Fecha de Produccion:</label>
+          <p-calendar inputId="fProduccion" formControlName="fProduccion" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="field">
+          <label>Fecha de Caducidad:</label>
+          <p-calendar inputId="fCaducidad" formControlName="fCaducidad" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="field">
+          <label>Descripcion:</label>
+          <input type="text" pInputText formControlName="descripcion" />
+          <small *ngIf="form.controls['descripcion'].errors && form.controls['descripcion'].touched">
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Tienda:</label>
+          <input type="text" pInputText formControlName="tienda" />
+          <small *ngIf="form.controls['tienda'].errors && form.controls['tienda'].touched">
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Marca:</label>
+          <input type="text" pInputText formControlName="marca" />
+          <small *ngIf="form.controls['marca'].errors && form.controls['marca'].touched">
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Clasificacion:</label>
+          <input type="text" pInputText formControlName="clasificacion" />
+          <small *ngIf="form.controls['clasificacion'].errors && form.controls['clasificacion'].touched">
+            Tiene errores
+          </small>
+        </div>
+
+        
+<div class="card flex justify-content-center">
+  <form [formGroup]="form">
+      <p-colorPicker formControlName="color"></p-colorPicker>
+  </form>
+</div>
+
+<!--          <label>Color:</label>
+          <input type="text" pInputText formControlName="color" />
+          <small *ngIf="form.controls['color'].errors && form.controls['color'].touched">
+            Tiene errores
+          </small>
+        </div>
+!-->
+        <div class="field">
+          <label>State:</label>
+          <p-inputSwitch inputId="state" formControlName="state"></p-inputSwitch>
+        </div>
+        <div class="field">
+          <button pButton type="submit" label="Guardar"></button>
+          <button pButton type="button" class="p-button-seccondary" label="Actualizar" (click)="updateProducto()"></button>
+          <button pButton type="button" class="p-button-seccondary" label="Ver Listado"
+            [routerLink]="['/producto-list']"></button>
+        </div>
+      </form>
+    </p-panel>
+  </div>
+</div>
+{{form.value|json}}
